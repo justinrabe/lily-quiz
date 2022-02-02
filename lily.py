@@ -8,4 +8,10 @@ db = mysql.connector.connect(
   user=config('user', default=''),
   password=config('password', default='')
 )
-print(db)
+cursor = db.cursor (MySQLdb.cursors.DictCursor)
+sql = "SELECT * FROM questions"
+cursor.execute(sql)
+rows = cursor.fetchall()
+for row in rows:
+    row["col"]
+print(rows)
