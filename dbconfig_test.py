@@ -1,10 +1,10 @@
 from mysql.connector import MySQLConnection, Error
 from python_mysql_dbconfig import read_db_config
 
-
-def query_with_fetchone():
+qaTotal = {}
+def fetch_sql():
     try:
-        qaTotal = {}
+      
         dbconfig = read_db_config()
         conn = MySQLConnection(**dbconfig)
         cursor = conn.cursor()
@@ -13,17 +13,15 @@ def query_with_fetchone():
         row = cursor.fetchone()
 
         ##for each entry in questions, there is a list of answers. 
-        ## TODO: add the 'correct bit into the lists.
         while row is not None:
             if row[0] in qaTotal.keys():
                 #question exists
-                qaTotal[row[0]].append({row[1]:row[2]})
+                qaTotal[row[0]].append({row[1]: row[2]})
             else:
                 #new question, insert new dictionary entry with answer as list of size 
                 qaTotal[row[0]] = [{row[1]: row[2]}]
-                print(qaTotal[row[0]])
             row = cursor.fetchone()
-        print(qaTotal)
+
        
 
     except Error as e:
@@ -35,4 +33,14 @@ def query_with_fetchone():
 
 
 if __name__ == '__main__':
-    query_with_fetchone()
+    fetch_sql()
+    print(qaTotal)
+    print('Hi Lily!')
+    print('This is my Valentines present to you hehe')
+    print('It''s a small little question app I built of a few questions from our relationship')
+    input("Press Enter to start the quiz!!")
+    for question in qaTotal:
+        print(question)
+        print(qaTotal[question])
+
+

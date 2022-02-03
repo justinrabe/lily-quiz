@@ -33,6 +33,21 @@ INSERT INTO answers
     ('Vi!!', 6, 0),
     ('Jayce xD', 6, 0)
 ;
+SELECT COUNT(*) FROM questions q
 
 
+SELECT * FROM answers WHERE questionID = 1
+
+UPDATE answers
+SET name = 'August 26 2020'
+WHERE ID = 1;
+UPDATE answers
+SET name = 'July 30 2020'
+WHERE ID = 2;
+UPDATE answers
+SET name = 'September 23 2020'
+WHERE ID = 3;
+UPDATE answers
+SET name = 'May 8 2020'
+WHERE ID = 4;
 
